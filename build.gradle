@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "org.springframework.boot" version "2.6.3"
 }
 
 group 'com.github.hlam'
@@ -11,15 +12,4 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.3'
-}
-
-task fatJar(type: Jar) {
-    setArchivesBaseName('AwsHealthCheck')
-    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-    manifest {
-        attributes 'Main-Class': 'com.github.hlam.Main'
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
 }
